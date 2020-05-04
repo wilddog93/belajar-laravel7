@@ -8,6 +8,9 @@ class PostController extends Controller
 {
     public function show($slug)
     {
-    	return view('posts.show', compact('slug'));
+    	$post = \DB::table('posts')->where('slug', $slug)->first();
+    	//artinya = $post = select from table posts where slug = $slug
+
+    	return view('posts.show', compact('post'));
     }
 }
